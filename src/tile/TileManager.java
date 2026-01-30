@@ -24,8 +24,6 @@ public class TileManager {
         tile = new Tile[10];
         mapTileNum = new int[gp.maxWorldCol][gp.maxWorldRow];
 
-        // new MapGenerator();
-
         getTileImage();
 
         loadMap("/res/maps/dataMap_02.txt");
@@ -34,24 +32,30 @@ public class TileManager {
     // Methods
     public void getTileImage() {
         try {
+            // GRASS
             tile[0] = new Tile();
             tile[0].image = ImageIO.read(getClass().getResourceAsStream("/res/assets/grass.png"));
-
+            
+            // SAND/GROUND
             tile[1] = new Tile();
             tile[1].image = ImageIO.read(getClass().getResourceAsStream("/res/assets/ground.png"));
 
+            // WALL
             tile[2] = new Tile();
             tile[2].image = ImageIO.read(getClass().getResourceAsStream("/res/assets/wall.png"));
             tile[2].collision = true;
 
+            // WATER
             tile[3] = new Tile();
             tile[3].image = ImageIO.read(getClass().getResourceAsStream("/res/assets/water.png"));
             tile[3].collision = true;
 
+            // TREE
             tile[4] = new Tile();
             tile[4].image = ImageIO.read(getClass().getResourceAsStream("/res/assets/tree.png"));
             tile[4].collision = true;
 
+            // EARTH
             tile[5] = new Tile();
             tile[5].image = ImageIO.read(getClass().getResourceAsStream("/res/assets/earth.png"));
 

@@ -8,22 +8,28 @@ import main.GamePanel;
 
 public class MapGenerator {
 
-    GamePanel gp = new GamePanel();
-
-    int row = 50;
-    int col = 50;
+    GamePanel gp;
 
     int[][] map;
 
-    public MapGenerator() {
+    int row;
+    int col;
 
-        this.map = new int[gp.maxScreenRow][gp.maxScreenCol];
 
-        this.readMap("/res/assets/map.png", this.gp.maxScreenCol, this.gp.maxScreenRow);
+    public MapGenerator(GamePanel gp) {
 
-        printArray(map, this.gp.maxScreenRow, this.gp.maxScreenCol);
+        this.gp = gp;
 
-        this.writeFile(map);
+        row = gp.maxWorldRow;
+        col = gp.maxWorldCol;
+
+        map = new int[row][col];
+
+        // this.readMap("/res/assets/GameMap.png", gp.maxScreenCol, gp.maxScreenRow);
+
+        printArray(map, row, col);
+
+        // this.writeFile(map);
     }
 
 
@@ -54,6 +60,8 @@ public class MapGenerator {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        writeFile(map);
     }
 
     public static void printArray(int[][] map, int row, int col) {
@@ -69,7 +77,7 @@ public class MapGenerator {
 
         try {
 
-            File myFile = new File("/res/maps/dataMap_02.txt");
+            File myFile = new File("src/res/maps/dataMap_02.txt");
             FileWriter myWriter = new FileWriter(myFile);
 
             if(myFile.createNewFile()) {

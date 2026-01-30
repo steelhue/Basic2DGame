@@ -5,6 +5,7 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.plaf.DimensionUIResource;
 import object.SuperObject;
+import tile.MapGenerator;
 import tile.TileManager;
 
 /*
@@ -46,8 +47,8 @@ public class GamePanel extends JPanel implements Runnable{
     public final int screenHeight = tileSize * maxScreenRow; // 576 pixels
 
     // WORLD SETTINGS
-    public final int maxWorldCol = 50;
-    public final int maxWorldRow = 50;
+    public final int maxWorldCol = 100;
+    public final int maxWorldRow = 100;
     public final int worldWidth = tileSize * maxWorldCol;
     public final int worldLength = tileSize * maxWorldRow;
 
@@ -55,12 +56,15 @@ public class GamePanel extends JPanel implements Runnable{
     final int FPS = 60;
     
     // OBJECTS
+    public MapGenerator mapGen = new MapGenerator(this);
+
     KeyHandler keyH = new KeyHandler();
     Thread gameThread;
     public CollisionChecker cChecker = new CollisionChecker(this);
     public AssetSetter aSetter = new AssetSetter(this);
     public Player player = new Player(this, keyH); // passes in 'this' because we didnt make a game object of this class and the Player class already has a GamePanel object
     TileManager tileM = new TileManager(this);
+
 
     public SuperObject obj[] = new SuperObject[10];
 
@@ -74,6 +78,11 @@ public class GamePanel extends JPanel implements Runnable{
 
         this.addKeyListener(keyH);
         this.setFocusable(true);
+    }
+
+    public void generateMap() {
+        
+        mapGen.readMap("/res/assets/GameMap.png", maxWorldCol, maxWorldRow);
     }
 
     public void setUpGame() {
