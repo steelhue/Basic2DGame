@@ -7,7 +7,21 @@ import main.GamePanel;
 
 /*
     DESCRIPTION:
+    This class is responsible for generating the map graphic on the window. 
+    It reads the each number from dataMap_02.txt and assigns the responsible type of tile at that location of the array, on the map
+    
+    CONSTRUCTORS AND METHODS:
+    - TileManager(GamePanel gp):
+        . Constructor
 
+    - getTileImage():
+        . Assigns each object in the Tile object array an image
+    
+    - loapMap():
+        . reads the dataMap_02.txt and stores it in mapTileNum[][] array
+    
+    - draw(Graphics g2D):
+        . 
 
 */
 

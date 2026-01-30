@@ -3,6 +3,19 @@ package main;
 import object.OBJ_door;
 import object.OBJ_key;
 
+/*
+    DESCRIPTION:
+    This class is responsible for taking in the SuperObject array and setting it's position on the map
+
+    CONSTRUCTORS AND METHODS:
+    - AssetSetter(Gamepanel gp):
+        . Constructor
+
+    - setObject():
+        . sets each object in the SuperObject array to it's specific SuperObject type
+        . Also sets location of the objet on the map
+*/
+
 public class AssetSetter {
     GamePanel gp;
 

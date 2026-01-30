@@ -6,6 +6,30 @@ import java.io.*;
 import javax.imageio.ImageIO;
 import main.GamePanel;
 
+/*
+    DESCRIPTION:
+    The MapGenerator class handles reading grayscale map data and converting it into a text filr, reading values
+    of gray from 0 to 5
+
+    # Runs before everything else #
+
+    METHODS AND CONSTRUCTORS:
+
+    - MapGenerator(GamePanel gp):
+        - Constructor
+        - assigns map 
+        - Assigns rows and cols
+
+    - readMap(String filePath, int row, int col)
+        - reads image stored as BufferedImage image
+        - WritableRaster object is responsible for reading the color values of the image
+        - stores the data into map
+
+    - writeFile(int[][] map)
+        - creates a file named dataMap_02.txt in the res/assets/maps directory
+        - stores the map array onto the file 
+*/
+
 public class MapGenerator {
 
     GamePanel gp;

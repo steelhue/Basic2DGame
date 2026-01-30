@@ -4,6 +4,11 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import main.GamePanel;
 
+/*
+    DESCRIPTION:
+    This class is the parent class that handles object position on the map
+*/
+
 public class SuperObject {
 
     public BufferedImage image;

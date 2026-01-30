@@ -19,6 +19,12 @@ import tile.TileManager;
     - GamePanel() (constructor):
         Responsible for window creation
 
+    - generateMap():
+        runs the readMap() method from Mapgenerator class
+
+    - setUpGame():
+        runs the setObject() class in the AssetSetter class
+
     - startGameThread()
 
     - run() (@Override):
