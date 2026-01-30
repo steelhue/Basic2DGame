@@ -67,8 +67,8 @@ public class Player extends Entity{
             . sets the start position, speed, and direction (string) of the player
     */
     public void setDefaultValue() {
-        worldX = gp.tileSize * 23; // tile posiiton on the world dtat mao
-        worldY = gp.tileSize * 21; // tile position on the world map 
+        worldX = gp.tileSize * 49; // tile posiiton on the world dtat map
+        worldY = gp.tileSize * 49; // tile position on the world map 
         speed = 4;
         direction = "idle";
     }

@@ -27,7 +27,7 @@ public class MapGenerator {
 
         // this.readMap("/res/assets/GameMap.png", gp.maxScreenCol, gp.maxScreenRow);
 
-        printArray(map, row, col);
+        // printArray(map, row, col);
 
         // this.writeFile(map);
     }
