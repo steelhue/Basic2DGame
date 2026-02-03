@@ -1,6 +1,8 @@
 package main;
 
+import object.OBJ_bike;
 import object.OBJ_door;
+import object.OBJ_drink;
 import object.OBJ_key;
 
 /*
@@ -27,17 +29,25 @@ public class AssetSetter {
     public void setObject() {
 
         gp.obj[0] = new OBJ_key();
-        gp.obj[0].worldX = 23 * gp.tileSize;
-        gp.obj[0].worldY = 7 * gp.tileSize;
+        gp.obj[0].worldX = 40 * gp.tileSize;
+        gp.obj[0].worldY = 40 * gp.tileSize;
 
         gp.obj[1] = new OBJ_key();
-        gp.obj[1].worldX = 23 * gp.tileSize;
+        gp.obj[1].worldX = 42 * gp.tileSize;
         gp.obj[1].worldY = 40 * gp.tileSize;
 
         gp.obj[2] = new OBJ_door();
-        gp.obj[2].worldX = 37 * gp.tileSize;
-        gp.obj[2].worldY = 7 * gp.tileSize;
+        gp.obj[2].worldX = 44 * gp.tileSize;
+        gp.obj[2].worldY = 40 * gp.tileSize;
 
-        // TODO: Before making any more objects, fix the map
+        gp.obj[3] = new OBJ_bike();
+        gp.obj[3].worldX = 46 * gp.tileSize;
+        gp.obj[3].worldY = 40 * gp.tileSize;
+
+        gp.obj[4] = new OBJ_drink();
+        gp.obj[4].worldX = 48 * gp.tileSize;
+        gp.obj[4].worldY = 40 * gp.tileSize;
+
+        
     }
 }
