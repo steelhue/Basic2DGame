@@ -10,7 +10,7 @@ public class OBJ_drink extends SuperObject{
         name = "drink";
 
         try {
-            image = ImageIO.read(getClass().getResourceAsStream("src/res/objects/drink.png")); 
+            image = ImageIO.read(getClass().getResourceAsStream("/res/objects/drink.png")); 
             
         } catch (IOException e) {
             e.printStackTrace();

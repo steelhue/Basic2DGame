@@ -88,7 +88,7 @@ public class GamePanel extends JPanel implements Runnable{
 
     public void generateMap() {
         
-        mapGen.readMap("/res/assets/GameMap.png", maxWorldCol, maxWorldRow);
+        mapGen.readMap("src/res/assets/GameMap.png", maxWorldCol, maxWorldRow);
     }
 
     public void setUpGame() {
