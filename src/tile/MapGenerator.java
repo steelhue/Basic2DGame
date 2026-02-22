@@ -49,11 +49,12 @@ public class MapGenerator {
 
         map = new int[row][col];
 
-        // this.readMap("/res/assets/GameMap.png", gp.maxScreenCol, gp.maxScreenRow);
+        this.readMap("src/res/assets/GameMap.png", row, col);
+        System.out.println("Map Generator is active");
 
-        // printArray(map, row, col);
+        printArray(map, row, col);
 
-        // this.writeFile(map);
+        this.writeFile(map);
     }
 
 
@@ -101,7 +102,7 @@ public class MapGenerator {
 
         try {
 
-            File myFile = new File("src/res/maps/dataMap_02.txt");
+            File myFile = new File("/res/maps/dataMap_02.txt");
             FileWriter myWriter = new FileWriter(myFile);
 
             if(myFile.createNewFile()) {

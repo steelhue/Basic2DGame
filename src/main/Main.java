@@ -26,11 +26,7 @@ public class Main {
 
         // window.setIconImage("");
 
-        // Generates the map first
-        // gamePanel.generateMap();
-
         // Spawns objects on the map
-        // TODO: FIX THIS SINCE IT MAKES THE GAME NOT RESPOND
         gamePanel.setUpGame();
 
         gamePanel.startGameThread();
