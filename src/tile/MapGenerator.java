@@ -49,12 +49,12 @@ public class MapGenerator {
 
         map = new int[row][col];
 
-        this.readMap("src/res/assets/GameMap.png", row, col);
+        readMap("src/res/assets/GameMap.png", row, col);
         System.out.println("Map Generator is active");
 
         printArray(map, row, col);
 
-        this.writeFile(map);
+        writeFile(map);
     }
 
 
@@ -85,8 +85,6 @@ public class MapGenerator {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        writeFile(map);
     }
 
     public static void printArray(int[][] map, int row, int col) {
