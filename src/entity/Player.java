@@ -30,6 +30,8 @@ import main.KeyHandler;
           named {direction}1 and {direction}2.
         . This calculation results in 6 fps
 
+    - pickUpObject(int i)
+
     - draw(Graphics g)
         . void method, Graphics g as parameter
         . sets BufferedImage to null
@@ -43,6 +45,9 @@ public class Player extends Entity{
 
     public final int screenX;
     public final int screenY;
+
+    int hasKey = 0;
+    int hasObj = 0;
 
     public Player(GamePanel gp, KeyHandler keyH) {
         this.gp = gp;
@@ -135,6 +140,7 @@ public class Player extends Entity{
 
         // CHECK OBJECT COLLISION
         int objIndex = gp.cChecker.checkObject(this, true);
+        pickUpObject(objIndex);
 
         // IF COLLISION IS FALSE; PLAYER CAN MODE
         if (collisionOn == false) {
@@ -167,6 +173,65 @@ public class Player extends Entity{
             }
 
             spriteCounter = 0;
+        }
+    }
+
+    public void pickUpObject(int i){
+
+        if(i != 999) {
+
+            // Deletes the object we just touched
+            String objectName = gp.obj[i].name;
+
+            switch(objectName){
+
+                case "Key":
+                    hasKey++;
+                    gp.obj[i] = null;
+                    break;
+
+                case "Drink":
+                    
+                    break;
+
+                case "Bike":
+                    
+                    break;
+
+                case "Gummybear":
+                    
+                    break;
+                
+                case "Helmet":
+                    
+                    break;
+                    
+                case "Jellyfish":
+                    
+                    break;
+
+                case "Miffy":
+                    
+                    break;
+
+                case "Steve":
+                    
+                    break;
+
+                case "Door":
+                    if(hasKey > 0) {
+                        gp.obj[i] = null;
+                        System.out.println("Key " + hasKey);
+                    }
+                    break;
+
+                case "Chest":
+                    if(hasKey > 0) {
+                        gp.obj[i] = null;
+                        System.out.println("Key " + hasKey);
+                    }
+                    break;
+            }
         }
     }
 

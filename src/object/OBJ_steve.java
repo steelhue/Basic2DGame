@@ -5,7 +5,7 @@ import javax.imageio.ImageIO;
 
 public class OBJ_steve extends SuperObject{
     public OBJ_steve() {
-        name = "steve";
+        name = "Steve";
 
         try {
             image = ImageIO.read(getClass().getResourceAsStream("/res/objects/steve.png"));
