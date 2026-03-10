@@ -68,8 +68,8 @@ public class MapGenerator {
             // A loop that iterates the 50 by 50 pixel map and reads the grayscale 
             // value of each pixel and stores it in a 2D array
 
-            for (int i = 0; i < row; i++) {
-                for (int j = 0; j < col; j++) {
+            for (int j = 0; j < row; j++) {
+                for (int i = 0; i < col; i++) {
                     // read each pixel
                     int pixelValue = wr.getSample(i, j, 0);
 

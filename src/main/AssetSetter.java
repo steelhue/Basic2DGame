@@ -4,7 +4,12 @@ import object.OBJ_bike;
 import object.OBJ_chest;
 import object.OBJ_door;
 import object.OBJ_drink;
+import object.OBJ_gummybear;
+import object.OBJ_helmet;
+import object.OBJ_jellyfish;
 import object.OBJ_key;
+import object.OBJ_miffy;
+import object.OBJ_steve;
 
 /*
     DESCRIPTION:
@@ -53,6 +58,24 @@ public class AssetSetter {
         gp.obj[5].worldX = 50 * gp.tileSize;
         gp.obj[5].worldY = 40 * gp.tileSize;
 
-        // TODO: Add more objects
+        gp.obj[6] = new OBJ_gummybear();
+        gp.obj[6].worldX = 52 * gp.tileSize;
+        gp.obj[6].worldY = 40 * gp.tileSize;
+
+        gp.obj[7] = new OBJ_helmet();
+        gp.obj[7].worldX = 54 * gp.tileSize;
+        gp.obj[7].worldY = 40 * gp.tileSize;
+
+        gp.obj[8] = new OBJ_jellyfish();
+        gp.obj[8].worldX = 56 * gp.tileSize;
+        gp.obj[8].worldY = 40 * gp.tileSize;
+
+        gp.obj[9] = new OBJ_miffy();
+        gp.obj[9].worldX = 54 * gp.tileSize;
+        gp.obj[9].worldY = 40 * gp.tileSize;
+
+        gp.obj[10] = new OBJ_steve();
+        gp.obj[10].worldX = 58 * gp.tileSize;
+        gp.obj[10].worldY = 40 * gp.tileSize;
     }
 }
