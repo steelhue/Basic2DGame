@@ -72,7 +72,7 @@ public class GamePanel extends JPanel implements Runnable{
     TileManager tileM = new TileManager(this);
 
 
-    public SuperObject obj[] = new SuperObject[11];
+    public SuperObject obj[] = new SuperObject[12];
 
 
     public GamePanel() {

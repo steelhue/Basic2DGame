@@ -218,6 +218,12 @@ public class Player extends Entity{
                     
                     break;
 
+                case "Boots":
+                    // Increase movement speed
+                    speed += 2;
+                    gp.obj[i] = null;
+                    break;
+
                 case "Door":
                     if(hasKey > 0) {
                         gp.obj[i] = null;

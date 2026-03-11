@@ -1,6 +1,7 @@
 package main;
 
 import object.OBJ_bike;
+import object.OBJ_boots;
 import object.OBJ_chest;
 import object.OBJ_door;
 import object.OBJ_drink;
@@ -77,5 +78,9 @@ public class AssetSetter {
         gp.obj[10] = new OBJ_steve();
         gp.obj[10].worldX = 58 * gp.tileSize;
         gp.obj[10].worldY = 40 * gp.tileSize;
+
+        gp.obj[11] = new OBJ_boots();
+        gp.obj[11].worldX = 60 * gp.tileSize;
+        gp.obj[11].worldY = 40 * gp.tileSize;
     }
 }
