@@ -2,15 +2,20 @@ package object;
 
 import java.io.IOException;
 import javax.imageio.ImageIO;
+import main.GamePanel;
 
 public class OBJ_bike extends SuperObject{
 
-    public OBJ_bike() {
+    GamePanel gp;
 
+    public OBJ_bike(GamePanel gp) {
+
+        this.gp = gp;
         name = "Bike";
 
         try {
             image = ImageIO.read(getClass().getResourceAsStream("/res/objects/raksha.png"));
+            uTool.scaleImage(image, gp.tileSize, gp.tileSize);
 
         } catch (IOException e) {
             e.printStackTrace();

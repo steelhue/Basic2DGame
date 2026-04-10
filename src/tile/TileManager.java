@@ -4,6 +4,7 @@ import java.awt.*;
 import java.io.*;
 import javax.imageio.ImageIO;
 import main.GamePanel;
+import main.UtilityTool;
 
 /*
     DESCRIPTION:
@@ -45,36 +46,26 @@ public class TileManager {
 
     // Methods
     public void getTileImage() {
+
+        setup(0, "grass", false);
+        setup(1, "ground", false);
+        setup(2, "wall", true);
+        setup(3, "water", true);
+        setup(4, "tree", true);
+        setup(5, "earth", false);
+    }
+
+    public void setup(int index, String imageName, boolean collision) {
+
+        UtilityTool uTool = new UtilityTool();
+
         try {
-            // GRASS
-            tile[0] = new Tile();
-            tile[0].image = ImageIO.read(getClass().getResourceAsStream("/res/assets/grass.png"));
-            
-            // SAND/GROUND
-            tile[1] = new Tile();
-            tile[1].image = ImageIO.read(getClass().getResourceAsStream("/res/assets/ground.png"));
+            tile[index] = new Tile();
+            tile[index].image = ImageIO.read(getClass().getResourceAsStream("/res/assets/" + imageName + ".png"));
+            tile[index].image = uTool.scaleImage(tile[index].image, gp.tileSize, gp.tileSize);
+            tile[index].collision = collision;
 
-            // WALL
-            tile[2] = new Tile();
-            tile[2].image = ImageIO.read(getClass().getResourceAsStream("/res/assets/wall.png"));
-            tile[2].collision = true;
-
-            // WATER
-            tile[3] = new Tile();
-            tile[3].image = ImageIO.read(getClass().getResourceAsStream("/res/assets/water.png"));
-            tile[3].collision = true;
-
-            // TREE
-            tile[4] = new Tile();
-            tile[4].image = ImageIO.read(getClass().getResourceAsStream("/res/assets/tree.png"));
-            tile[4].collision = true;
-
-            // EARTH
-            tile[5] = new Tile();
-            tile[5].image = ImageIO.read(getClass().getResourceAsStream("/res/assets/earth.png"));
-
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
         }
     }
 
@@ -143,7 +134,7 @@ public class TileManager {
                 worldY + gp.tileSize > gp.player.worldY - gp.player.screenY &&
                 worldY - gp.tileSize < gp.player.worldY + gp.player.screenY) {
 
-                g2D.drawImage(tile[tileNum].image, screenX, screenY, gp.tileSize, gp.tileSize, null);
+                g2D.drawImage(tile[tileNum].image, screenX, screenY, null);
             }
             
             worldCol++;

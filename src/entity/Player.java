@@ -2,10 +2,10 @@ package entity;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
 import javax.imageio.ImageIO;
 import main.GamePanel;
 import main.KeyHandler;
+import main.UtilityTool;
 
 /*
     DESCRIPTION:    
@@ -46,8 +46,8 @@ public class Player extends Entity{
     public final int screenX;
     public final int screenY;
 
-    int hasKey = 0;
-    int hasObj = 0;
+    public int hasKey = 0;
+    public int objCount = 0;
 
     public Player(GamePanel gp, KeyHandler keyH) {
         this.gp = gp;
@@ -86,25 +86,31 @@ public class Player extends Entity{
             . assigns BufferedImage variables (from entity) to character frames
     */
     public void getPlayerImage() {
+
+        idle = setup("idle");
+        up1 = setup("up1");
+        up2 = setup("up2");
+        down1 = setup("down1");
+        down2 = setup("down2");
+        left1 = setup("left1");
+        left2 = setup("left2");
+        right1 = setup("right1");
+        right2 = setup("right2");
+
+    }
+
+    public BufferedImage setup(String imageName) {
+        UtilityTool uTool = new UtilityTool();
+        BufferedImage scaledImage = null;
+
         try {
-            
-            idle = ImageIO.read(getClass().getResourceAsStream("/res/charFrames/idle.png"));
-            up1 = ImageIO.read(getClass().getResourceAsStream("/res/charFrames/up1.png"));
-            up2 = ImageIO.read(getClass().getResourceAsStream("/res/charFrames/up2.png"));
-            down1 = ImageIO.read(getClass().getResourceAsStream("/res/charFrames/down1.png"));
-            down2 = ImageIO.read(getClass().getResourceAsStream("/res/charFrames/down2.png"));
-            left1 = ImageIO.read(getClass().getResourceAsStream("/res/charFrames/left1.png"));
-            left2 = ImageIO.read(getClass().getResourceAsStream("/res/charFrames/left2.png"));
-            right1 = ImageIO.read(getClass().getResourceAsStream("/res/charFrames/right1.png"));
-            right2 = ImageIO.read(getClass().getResourceAsStream("/res/charFrames/right2.png"));
-            
+            scaledImage = ImageIO.read(getClass().getResourceAsStream("/res/charFrames/" + imageName + ".png"));
+            scaledImage = uTool.scaleImage(scaledImage, gp.tileSize, gp.tileSize);
 
-            // TODO: add more frames later
-
-        } catch (IOException e) {
-
-            e.printStackTrace();
+        } catch (Exception e) {
         }
+
+        return scaledImage;
     }
 
 
@@ -186,55 +192,95 @@ public class Player extends Entity{
             switch(objectName){
 
                 case "Key":
+                    gp.playerSE(1); // PLays coin sound
                     hasKey++;
                     gp.obj[i] = null;
+                    gp.ui.showMessage("Key Collected!");
                     break;
 
                 case "Drink":
-                    
+                    gp.playerSE(1);
+                    objCount++;
+                    gp.obj[i] = null;
+                    gp.ui.showMessage("Drink Collected!");
                     break;
 
                 case "Bike":
-                    
+                    gp.playerSE(1);
+                    objCount++;
+                    gp.obj[i] = null;
+                    gp.ui.showMessage("Raksha Collected!");
                     break;
 
                 case "Gummybear":
-                    
+                    gp.playerSE(1);
+                    objCount++;
+                    gp.obj[i] = null;
                     break;
                 
                 case "Helmet":
-                    
+                    gp.playerSE(1);
+                    objCount++;
+                    gp.obj[i] = null;
                     break;
                     
                 case "Jellyfish":
-                    
+                    gp.playerSE(1);
+                    objCount++;
+                    gp.obj[i] = null;
                     break;
 
                 case "Miffy":
-                    
+                    gp.playerSE(1);
+                    objCount++;
+                    gp.obj[i] = null;
                     break;
 
                 case "Steve":
-                    
+                    gp.playerSE(1);
+                    objCount++;
+                    gp.obj[i] = null;
                     break;
 
                 case "Boots":
                     // Increase movement speed
+                    gp.playerSE(2);
                     speed += 2;
                     gp.obj[i] = null;
                     break;
 
                 case "Door":
                     if(hasKey > 0) {
+                        gp.playerSE(3); // Plays door SE
                         gp.obj[i] = null;
                         System.out.println("Key " + hasKey);
+                        hasKey--;
+                        gp.ui.showMessage("You opened the door!");
+                    } else {
+                        // play error sound
+                        gp.playerSE(5);
+                        gp.ui.showMessage("You don't have a key!");
                     }
                     break;
 
                 case "Chest":
                     if(hasKey > 0) {
-                        gp.obj[i] = null;
-                        System.out.println("Key " + hasKey);
+                        if (objCount == 7) {
+                            gp.playerSE(3); // pLays door SE
+                            gp.obj[i] = null;
+                            System.out.println("Key " + hasKey);
+                            hasKey--;
+                            gp.ui.gameFinished = true;
+                            gp.stopMusic();
+                            gp.playerSE(4); // Plays win sounf fx
+                        } else {
+                            gp.playerSE(5);
+                            gp.ui.showMessage("You need to collect all items...\nThere are 7 items total.");
+                        }
+                    } else {
+                        // play error sound
+                        gp.playerSE(5);
+                        gp.ui.showMessage("You don't have a key...");
                     }
                     break;
             }
@@ -292,7 +338,7 @@ public class Player extends Entity{
                 break;
         }
 
-        g2D.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
+        g2D.drawImage(image, screenX, screenY, null);
     }
 
 }

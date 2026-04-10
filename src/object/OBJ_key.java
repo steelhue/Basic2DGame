@@ -2,6 +2,7 @@ package object;
 
 import java.io.IOException;
 import javax.imageio.ImageIO;
+import main.GamePanel;
 
 /*
     DESCRIPTION:
@@ -10,11 +11,16 @@ import javax.imageio.ImageIO;
 
 public class OBJ_key extends SuperObject{
     
-    public OBJ_key() {
+    GamePanel gp;
+
+    public OBJ_key(GamePanel gp) {
+
+        this.gp = gp;
         name = "Key";
 
         try {
             image = ImageIO.read(getClass().getResourceAsStream("/res/objects/key.png"));
+            uTool.scaleImage(image, gp.tileSize, gp.tileSize);
 
         } catch (IOException e) {
             e.printStackTrace();

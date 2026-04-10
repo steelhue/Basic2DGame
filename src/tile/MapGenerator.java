@@ -52,7 +52,7 @@ public class MapGenerator {
         readMap("src/res/assets/GameMap.png", row, col);
         System.out.println("Map Generator is active");
 
-        printArray(map, row, col);
+        // printArray(map, row, col);
 
         writeFile(map);
     }
