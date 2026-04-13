@@ -5,7 +5,6 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.plaf.DimensionUIResource;
 import object.SuperObject;
-import tile.MapGenerator;
 import tile.TileManager;
 
 /*
@@ -60,7 +59,7 @@ public class GamePanel extends JPanel implements Runnable{
     final int FPS = 60;
     
     // OBJECTS
-    public MapGenerator mapGen = new MapGenerator(this);
+    // public MapGenerator mapGen = new MapGenerator(this);
 
     // SYSTEMS
     TileManager tileM = new TileManager(this);

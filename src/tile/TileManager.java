@@ -36,7 +36,7 @@ public class TileManager {
     public TileManager(GamePanel gp) {
         this.gp = gp;
 
-        tile = new Tile[10];
+        tile = new Tile[50];
         mapTileNum = new int[gp.maxWorldCol][gp.maxWorldRow];
 
         getTileImage();
@@ -48,11 +48,20 @@ public class TileManager {
     public void getTileImage() {
 
         setup(0, "grass", false);
-        setup(1, "ground", false);
-        setup(2, "wall", true);
-        setup(3, "water", true);
-        setup(4, "tree", true);
-        setup(5, "earth", false);
+        setup(1, "grass-base", false);
+        setup(2, "ground", false);
+        setup(3, "wall", true);
+        setup(4, "water", true);
+        setup(5, "water-top", true);
+        setup(6, "water-bottom", true);
+        setup(7, "water-left", true);
+        setup(8, "water-right", true);
+        setup(9, "water-top-left", true);
+        setup(10, "water-top-right", true);
+        setup(11, "water-bottom-left", true);
+        setup(12, "water-bottom-right", true);
+        setup(13, "tree", true);
+        setup(14, "earth", false);
     }
 
     public void setup(int index, String imageName, boolean collision) {
@@ -72,9 +81,7 @@ public class TileManager {
     public void loadMap(String filePath) {
 
         try {
-            
-            File file = new File("src/res/maps/dataMap_02.txt");
-            InputStream is = new FileInputStream(file);
+            InputStream is = getClass().getResourceAsStream(filePath); 
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
 
             int col = 0;
