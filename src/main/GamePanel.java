@@ -75,6 +75,12 @@ public class GamePanel extends JPanel implements Runnable{
     public Player player = new Player(this, keyH); // passes in 'this' because we didnt make a game object of this class and the Player class already has a GamePanel object
     public SuperObject obj[] = new SuperObject[50];
 
+    // GAME STATE
+    public int gameState;
+    public final int playState = 1;
+    public final int pauseState = 2;
+
+
 
     public GamePanel() {
 
@@ -92,6 +98,9 @@ public class GamePanel extends JPanel implements Runnable{
 
         // Plays backgound.wav
         playMusic(0);
+        stopMusic();
+
+        gameState = playState;
     }
 
     public void startGameThread() {
@@ -142,7 +151,12 @@ public class GamePanel extends JPanel implements Runnable{
 
     public void update() {
 
-        player.update();
+        if (gameState == playState) {
+            player.update();
+        }
+        if (gameState == pauseState) {
+            // nothing
+        }
     }
 
     public void paintComponent(Graphics g) {
