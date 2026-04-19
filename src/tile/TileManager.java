@@ -40,28 +40,45 @@ public class TileManager {
         mapTileNum = new int[gp.maxWorldCol][gp.maxWorldRow];
 
         getTileImage();
-
-        loadMap("/res/maps/dataMap_02.txt");
+        loadMap("/res/maps/newMap.txt");
     }
 
     // Methods
     public void getTileImage() {
 
-        setup(0, "grass", false);
-        setup(1, "grass-base", false);
-        setup(2, "ground", false);
-        setup(3, "wall", true);
-        setup(4, "water", true);
-        setup(5, "water-top", true);
-        setup(6, "water-bottom", true);
-        setup(7, "water-left", true);
-        setup(8, "water-right", true);
-        setup(9, "water-top-left", true);
-        setup(10, "water-top-right", true);
-        setup(11, "water-bottom-left", true);
-        setup(12, "water-bottom-right", true);
-        setup(13, "tree", true);
-        setup(14, "earth", false);
+        setup(0, "00", true);
+        setup(1, "01", false);
+        setup(2, "02", false);
+        setup(3, "03", false);
+        setup(4, "04", false);
+        setup(5, "05", false);
+        setup(6, "06", false);
+        setup(7, "07", false);
+        setup(8, "08", false);
+        setup(9, "09", false);
+        setup(10, "10", false);
+        setup(11, "11", false);
+        setup(12, "12", false);
+        setup(13, "13", false);
+        setup(14, "14", false);
+        setup(15, "15", true);
+        setup(16, "16", true);
+        setup(17, "17", true);
+        setup(18, "18", true);
+        setup(19, "19", true);
+        setup(20, "20", true);
+        setup(21, "21", true);
+        setup(22, "22", true);
+        setup(23, "23", true);
+        setup(24, "24", true);
+        setup(25, "25", true);
+        setup(26, "26", true);
+        setup(27, "27", true);
+        setup(28, "28", true);
+        setup(29, "29", false);
+        setup(30, "30", true);
+        setup(31, "31", true);
+        setup(32, "32", false);
     }
 
     public void setup(int index, String imageName, boolean collision) {
@@ -75,6 +92,8 @@ public class TileManager {
             tile[index].collision = collision;
 
         } catch (Exception e) {
+            System.out.println("Error loading image: " + imageName);
+            e.printStackTrace();
         }
     }
 
